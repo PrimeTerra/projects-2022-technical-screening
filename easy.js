@@ -30,9 +30,32 @@ var assert = require("assert")
 // Output numArray: []
 // Explanation: Empty array...
 
+const alternatingAr = (ar1, ar2) => {
+    const alternatingAr = []
+
+    let i = 0
+    while (i < ar1.length + ar2.length) {
+        if (i % 2 == 0) {
+            alternatingAr.push(ar1.shift())
+        } else {
+            alternatingAr.push(ar2.shift())
+        }
+        i++
+    }
+
+    return alternatingAr
+}
+
 const altNumbers = (numArray) => {
     // TODO: COMPLETE THIS FUNCTION
-    return [];
+    const posAr = numArray.filter(num => num >= 0)
+    const negAr = numArray.filter(num => num < 0)
+
+    if (negAr.length > posAr.length) {
+        return alternatingAr(negAr, posAr)
+    } else {
+        return alternatingAr(posAr, negAr)
+    }
 }
 
 module.exports = { altNumbers } // Do not modify this line
